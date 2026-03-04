@@ -25,8 +25,6 @@ class JobApplication(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+    def __str__(self):
+        return f"{self.company_name} - {self.user.username}"
 
-def __str__(self):
-    return {self.user.username}
-
-# Create your models here.
