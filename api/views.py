@@ -1,6 +1,6 @@
 
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView 
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, CreateAPIView, RetrieveAPIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -18,6 +18,7 @@ class JobApplicationListCreateView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['status']
+
 
 
 
@@ -39,3 +40,13 @@ class UserCreateView(CreateAPIView):
     permission_classes = [AllowAny]
 
   
+
+class JobApplicationListView(RetrieveAPIView):
+    serializer_class = JobApplicationSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'pk'
+    permission_classes = [IsAuthenticated]
+
+
+    def get_queryset(self):
+        return JobApplication.objects.filter(user=self.request.user)
