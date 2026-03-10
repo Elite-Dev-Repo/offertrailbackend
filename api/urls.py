@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+ ##tch
 
 urlpatterns = [
     path('register/', views.UserCreateView.as_view(), name='user-create'),
