@@ -20,6 +20,9 @@ class JobApplicationListCreateView(ListCreateAPIView):
     filterset_fields = ['status']
 
 
+class Meta:
+        ordering = ['-created_at']
+
 
 
     def perform_create(self, serializer):
