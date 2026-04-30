@@ -16,6 +16,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from datetime import timedelta
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
@@ -33,8 +34,10 @@ SECRET_KEY = 'django-insecure-2ll@*jze&)613ny$)08bak3__u(+%udhv4m(!x8%7@bb7^y+lt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['offertrailbackend.onrender.com', 'localhost', '127.0.0.1']
 
+
+CSRF_TRUSTED_ORIGINS = ['https://offertrailbackend.onrender.com']
 
 # Application definition
 
@@ -90,7 +93,7 @@ DATABASES = {
         default=os.getenv('DATABASE_URL'),
         conn_max_age=600,
         conn_health_checks=True,
-    )
+    )   
 }
 
 
@@ -133,6 +136,7 @@ STATIC_URL = 'static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': [
@@ -145,8 +149,8 @@ REST_FRAMEWORK = {
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME" : timedelta(minutes=30),
-    "REFRESH_TOKEN_LIFETIME" : timedelta(days=15)
+    "ACCESS_TOKEN_LIFETIME" : timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME" : timedelta(days=30)
 
 }
 
