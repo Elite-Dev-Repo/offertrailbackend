@@ -34,10 +34,10 @@ SECRET_KEY = 'django-insecure-2ll@*jze&)613ny$)08bak3__u(+%udhv4m(!x8%7@bb7^y+lt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['offertrailbackend.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['offertrailbackend.vercel.app', 'localhost', '127.0.0.1']
 
 
-CSRF_TRUSTED_ORIGINS = ['https://offertrailbackend.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://offertrailbackend.vercel.app']
 
 # Application definition
 
@@ -154,5 +154,5 @@ SIMPLE_JWT = {
 
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
